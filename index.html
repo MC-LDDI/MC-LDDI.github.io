@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LDDI - Page</title>
+</head>
+<body>
+  <h1>📁 My GitHub Repository</h1>
+  <ul id="file-list">Loading...</ul>
+
+  <script>
+    const username = "MC-LDDI";
+    const repo = "MC-LDDI.github.io";
+    const branch = "main"; // or "master"
+
+    fetch(`https://api.github.com/repos/${username}/${repo}/contents/?ref=${branch}`)
+      .then(res => res.json())
+      .then(files => {
+        const list = document.getElementById("file-list");
+        list.innerHTML = "";
+        files.forEach(file => {
+          const li = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = file.html_url;
+          link.textContent = file.name;
+          link.target = "_blank";
+          li.appendChild(link);
+          list.appendChild(li);
+        });
+      })
+      .catch(error => {
+        document.getElementById("file-list").textContent = "Error loading directory.";
+        console.error(error);
+      });
+  </script>
+</body>
+</html>
