@@ -6,33 +6,11 @@
   <title>LDDI - Page</title>
 </head>
 <body>
-  <h1>📁 My GitHub Repository</h1>
-  <ul id="file-list">Loading...</ul>
-
-  <script>
-    const username = "MC-LDDI";
-    const repo = "MC-LDDI.github.io";
-    const branch = "main"; // or "master"
-
-    fetch(`https://api.github.com/repos/${username}/${repo}/contents/?ref=${branch}`)
-      .then(res => res.json())
-      .then(files => {
-        const list = document.getElementById("file-list");
-        list.innerHTML = "";
-        files.forEach(file => {
-          const li = document.createElement("li");
-          const link = document.createElement("a");
-          link.href = file.html_url;
-          link.textContent = file.name;
-          link.target = "_blank";
-          li.appendChild(link);
-          list.appendChild(li);
-        });
-      })
-      .catch(error => {
-        document.getElementById("file-list").textContent = "Error loading directory.";
-        console.error(error);
-      });
-  </script>
+   <img src="./images/Activities.png">
+  <img src="./images/Assessment-W,png">
+  <img src="./images/Assessment.png">
+  <img src="./images/Instructions.png">
+  <img src="./images/Notes.png">
+  <img src="./images/Pre-Class.png">
 </body>
 </html>
